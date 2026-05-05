@@ -1,0 +1,8 @@
+FROM ollama/ollama:latest
+
+USER root
+
+ENV OLLAMA_HOST=0.0.0.0:11434
+ENV PORT=11434
+
+EXPOSE 11434
