@@ -11,9 +11,10 @@ until ollama list >/dev/null 2>&1; do
 done
 echo "Ollama server ready."
 
-# Pull models from OLLAMA_MODELS env var (comma-separated)
-if [ -n "$OLLAMA_MODELS" ]; then
-  echo "$OLLAMA_MODELS" | tr ',' '\n' | while read model; do
+# Pull models from PULL_MODELS env var (comma-separated)
+# Note: DO NOT use OLLAMA_MODELS — that's reserved by Ollama for the model storage directory
+if [ -n "$PULL_MODELS" ]; then
+  echo "$PULL_MODELS" | tr ',' '\n' | while read model; do
     model=$(echo "$model" | tr -d ' ')
     if [ -n "$model" ]; then
       echo "Pulling model: $model"
